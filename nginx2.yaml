@@ -1,0 +1,19 @@
+- name: install and run nginx  #we run this ansible-playbook in ansible master server and the tasks will be executed in targeted hosts/server
+  become: yes                  #to get root access, in adhoc commands -b
+  hosts: web
+  tasks:
+  - name: install nginx
+    ansible.builtin.dnf:       #ansible.builtin.package: works for all distribution(heterogenous),dnf works only for redhat 
+    name: nginx
+    state: latest              #latest,present,absent,installed
+  - name: start nginx
+    ansible.builtin.service:   #ansible builtin command to start a service    
+    name: nginx
+    state: started
+    enabled: yes
+    #to run the file ansible -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 file-name.yaml
+
+
+
+
+

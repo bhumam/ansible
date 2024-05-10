@@ -1,5 +1,10 @@
-- name: ping the server
-  hosts: web
-  tasks:
-  - name: pinging the server
-    ansible.builtin.ping:
+- name: ping the server               #anything u want
+  hosts: web                          #targeted node/server/host to run this 
+  tasks:                              #list of tasks(modules/collections) to be executed 
+  - name: pinging the server          #task name
+    ansible.builtin.ping:             #ansible builtin module for ping
+
+#this is a play(name,hosts,vars,tasks etc.,)
+
+
+ #to run the file ansible -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 file-name.yaml

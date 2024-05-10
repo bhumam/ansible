@@ -1,0 +1,15 @@
+- name: variables at task level
+  hosts: localhost
+  vars:
+    course: "ansible"
+    duration: "15hrs"
+  tasks:
+    - name: overriding variable values at task
+      vars:
+        course: "devops"
+        duration: "150hrs"
+      ansible.builtin.debug:
+        msg: "Hello Iam learning {{ course }},duration is {{ duration }}"
+    - name: inheriting variable values from play
+      ansible.builtin.debug:
+        msg: "Hello Iam learning {{ course }},duration is {{ duration }}"
