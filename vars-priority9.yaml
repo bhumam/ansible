@@ -1,0 +1,31 @@
+- name: variable preference
+  hosts: localhost
+  vars:
+    WISHES: "best wishes from play variable"
+  vars_files:
+  - varsfile.yaml
+  vars_prompt:
+  - name: WISHES
+    prompt: enter wishes
+    private: false
+  tasks:
+  - name: print variable according to preference
+    vars:
+      WISHES: "best wishes from task variable"
+    ansible.builtin.debug:
+      msg: "Hello,{{ WISHES }}"
+
+
+
+
+
+
+
+
+# 1. arguments can be passed directly from terminal/console
+# 2. Task level
+# 3. variable files
+# 4. Prompt
+# 5. Play level
+# 6. inventory
+# 7. role level

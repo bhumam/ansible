@@ -1,0 +1,44 @@
+- name: default value
+  hosts: localhost
+  vars:
+    WISHES: "best wishes"
+    NUMBERS: [1,2,2,3,4,5,5]
+  tasks:
+  - name: print default value
+    debug:
+      msg: "course is {{ course | default('Devops')}}" 
+  - name: uppercase
+    debug:
+      msg: "Hello,{{ WISHES | upper}}"
+  - name: lowercase
+    debug:
+      msg: "Hello,{{ WISHES | upper}}"
+  - name: remove duplicates
+    debug:
+      msg: "{{ NUMBERS | unique }}"
+  - name: print min and max
+    debug:
+      msg: "max number:{{ NUMBERS | max }},min number:{{ NUMBERS | min }}"
+
+
+- name: convert dictionary into items/list
+  hosts: localhost
+  vars:
+    my_dict: # this is called as dictionary or map or key/value pairs.
+      Course: Ansbile
+      Duration: 120hr
+  tasks:
+  - name: dictionary into items/list
+    debug:
+      msg: "After convertion: {{ my_dict | dict2items }}"
+
+- name: convert items to dictionary
+  hosts: localhost
+  vars:
+    my_list:
+    - {'key': 'Course', 'value': 'Ansbile'}
+    - {'key': 'Duration', 'value': '120hr'}
+  tasks:
+  - name: items to dictionary
+    debug:
+      msg: "After convertion: {{ my_list | items2dict }}"

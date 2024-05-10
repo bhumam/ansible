@@ -7,7 +7,7 @@
     name: nginx
     state: latest              #latest,present,absent,installed
   - name: start nginx
-    ansible.builtin.service:   #ansible builtin command to start a service    
+    ansible.builtin.service:   #ansible builtin command to start a service----we can directly give dnf:,service:,debug: etc., 
     name: nginx
     state: started
     enabled: yes

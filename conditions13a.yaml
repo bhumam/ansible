@@ -1,0 +1,19 @@
+- name: condition to create user if not exists
+  hosts: web
+  become: yes
+  tasks:
+  - name: check user exists or not
+    ansible.builtin.command: id expense
+    register: USER                        # previous task output captured by register keyword in USER variable
+    ignore_errors: true                   # ignore errors and continues it execution further
+  
+  - name: user info
+    debug:
+      msg: "user info: {{ USER }}"
+  
+  - name: create user
+    ansible.builtin.command: useradd expense
+    when: USER.rc != 0                     #rc is nothing but exit status of command (id expense)
+  - name: say Hello
+    ansible.builtin.debug:
+      msg: "Hello"
